@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8187.4"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="Thermostat" customModuleProvider="target">
+            <connections>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="294" height="356"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="294" height="356"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDg-mm-dH2">
+                        <rect key="frame" x="20" y="20" width="17" height="316"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gn8-qf-v6p">
+                                <rect key="frame" x="0.0" y="0.0" width="17" height="316"/>
+                                <subviews>
+                                    <slider horizontalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uoU-D1-SbD">
+                                        <rect key="frame" x="-2" y="-3" width="21" height="321"/>
+                                        <animations/>
+                                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" sliderType="linear" id="JIw-iM-WaF">
+                                            <connections>
+                                                <binding destination="-2" name="enabled" keyPath="isOn" id="a9B-Zf-Cai"/>
+                                            </connections>
+                                        </sliderCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="temperature" id="A5p-BD-4tu"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <animations/>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <animations/>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-Ht-wVG">
+                        <rect key="frame" x="196" y="228" width="88" height="32"/>
+                        <animations/>
+                        <buttonCell key="cell" type="push" title="Warmer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iQ4-7k-5lm">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="makeWarmer:" target="-2" id="N2f-Je-qQJ"/>
+                            <binding destination="-2" name="enabled" keyPath="isOn" id="F3c-Bn-LgX"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rkd-CH-7X6">
+                        <rect key="frame" x="204" y="93" width="80" height="32"/>
+                        <animations/>
+                        <buttonCell key="cell" type="push" title="Cooler" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qGm-ct-faC">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="makeCooler:" target="-2" id="GAd-4T-u50"/>
+                            <binding destination="-2" name="enabled" keyPath="isOn" id="SC3-sb-lkm"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQE-GJ-gKE">
+                        <rect key="frame" x="58" y="158" width="48" height="41"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="78" id="S4o-VZ-NM1">
+                            <font key="font" metaFont="system" size="34"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="temperature" id="2Br-Wu-u0r">
+                                <dictionary key="options">
+                                    <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJY-dq-oeg">
+                        <rect key="frame" x="205" y="26" width="78" height="19"/>
+                        <animations/>
+                        <buttonCell key="cell" type="recessed" title="Power" bezelStyle="recessed" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ahX-fD-x9l">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <font key="font" metaFont="systemBold" size="12"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="isOn" id="4CS-KE-ePg"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rkd-CH-7X6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uh8-Ht-wVG" secondAttribute="bottom" constant="20" id="48X-er-RA4"/>
+                    <constraint firstItem="YQE-GJ-gKE" firstAttribute="leading" secondItem="uoU-D1-SbD" secondAttribute="trailing" constant="23" id="Blb-GA-uQY"/>
+                    <constraint firstItem="YQE-GJ-gKE" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="QTX-LQ-gdH"/>
+                    <constraint firstAttribute="bottom" secondItem="rkd-CH-7X6" secondAttribute="bottom" constant="100" id="Swd-82-QUd"/>
+                    <constraint firstAttribute="trailing" secondItem="rkd-CH-7X6" secondAttribute="trailing" constant="16" id="Y9M-Ve-xaD"/>
+                    <constraint firstItem="VDg-mm-dH2" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="bg9-2s-Zpc"/>
+                    <constraint firstItem="VDg-mm-dH2" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="kla-N3-Xjv"/>
+                    <constraint firstAttribute="trailing" secondItem="uh8-Ht-wVG" secondAttribute="trailing" constant="16" id="vFz-gk-PtP"/>
+                    <constraint firstAttribute="bottom" secondItem="VDg-mm-dH2" secondAttribute="bottom" constant="20" symbolic="YES" id="wUM-cZ-YrA"/>
+                    <constraint firstItem="uh8-Ht-wVG" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="100" id="wja-n8-Hg4"/>
+                </constraints>
+                <animations/>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="74" y="282"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="g8k-Fc-Cqo"/>
+    </objects>
+</document>
