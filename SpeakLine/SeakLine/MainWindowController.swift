@@ -25,6 +25,9 @@ class MainWindowController: NSWindowController {
 	}
 
 	let voices = NSSpeechSynthesizer.availableVoices()
+	var langs: [String] {
+		return langsFor(voices: voices)
+	}
 
 
 	override func windowDidLoad() {
@@ -60,6 +63,19 @@ class MainWindowController: NSWindowController {
 		let attributes = NSSpeechSynthesizer.attributesForVoice(identifier)
 
 		return attributes["VoiceName"] as? String
+	}
+
+	func langsFor(voices voices: [String]) -> [String] {
+
+		var voiceLangs: [String] = []
+
+		for voice in voices {
+
+			let attr = NSSpeechSynthesizer.attributesForVoice(voice)["VoiceLanguage"] as! String
+			voiceLangs.append(attr)
+		}
+
+		return voiceLangs
 	}
 
 	func updateButtons() {
@@ -129,12 +145,18 @@ extension MainWindowController: NSTableViewDataSource {
 	func tableView(tableView: NSTableView,
 		objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
 
-			let voice = voices[row]
-			let voiceName = voiceNameFor(identifier: voice)!
+			if tableColumn!.title == "Voices" {
+				let voice = voices[row]
+				let voiceName = voiceNameFor(identifier: voice)!
 
-			return voiceName
+				return voiceName
+			} else {
+				
+				let lang = langs[row]
+				return lang
+			}
 	}
-	
+
 }
 
 
@@ -151,6 +173,6 @@ extension MainWindowController: NSTableViewDelegate {
 		} else {
 			speechSynth.setVoice(voice)
 		}
-
+		
 	}
 }
